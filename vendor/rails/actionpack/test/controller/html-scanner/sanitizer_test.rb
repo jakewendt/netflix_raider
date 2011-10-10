@@ -1,8 +1,15 @@
 require 'abstract_unit'
 
-class SanitizerTest < Test::Unit::TestCase
+class SanitizerTest < ActionController::TestCase
   def setup
     @sanitizer = nil # used by assert_sanitizer
+  end
+
+  def test_strip_tags_with_quote
+    sanitizer = HTML::FullSanitizer.new
+    string    = '<" <img src="trollface.gif" onload="alert(1)"> hi'
+
+    assert_equal ' hi', sanitizer.sanitize(string)
   end
 
   def test_strip_tags
@@ -19,6 +26,7 @@ class SanitizerTest < Test::Unit::TestCase
     assert_equal "This has a  here.", sanitizer.sanitize("This has a <!-- comment --> here.")
     assert_equal "This has a  here.", sanitizer.sanitize("This has a <![CDATA[<section>]]> here.")
     assert_equal "This has an unclosed ", sanitizer.sanitize("This has an unclosed <![CDATA[<section>]] here...")
+    assert_equal "non printable char is a tag", sanitizer.sanitize("<\x07a href='/hello'>non printable char is a tag</a>")
     [nil, '', '   '].each { |blank| assert_equal blank, sanitizer.sanitize(blank) }
   end
 
