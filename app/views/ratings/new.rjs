@@ -1,0 +1,4 @@
+page.replace_html "user_rating_#{@title.id}", user_star_bar(@rating.user_rating,@title.id)
+page.replace_html "predicted_rating_#{@title.id}", star_bar(@rating.predicted_rating)
+page.visual_effect :highlight, dom_id(@title), :duration => 2
+page << "add_rating_listeners('#user_rating_#{@title.id}')"

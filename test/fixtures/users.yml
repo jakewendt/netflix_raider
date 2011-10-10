@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  netflix_id: MyString1
+  oauth_token: MyString
+  oauth_token_secret: MyString
+
+two:
+  netflix_id: MyString2
+  oauth_token: MyString
+  oauth_token_secret: MyString

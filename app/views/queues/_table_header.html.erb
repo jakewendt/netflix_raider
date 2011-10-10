@@ -1,0 +1,14 @@
+<tr>
+<% if @user %>
+	<th>Actual</th>
+	<th>Predicted</th>
+<% end %>
+	<th>Average</th>
+	<th>Release</th>
+<% if @user and @user.is_jake? %>
+	<th>&nbsp;</th>
+	<th>&nbsp;</th>
+<% end %>
+	<th>Title</th>
+	<th>&nbsp;</th>
+</tr>

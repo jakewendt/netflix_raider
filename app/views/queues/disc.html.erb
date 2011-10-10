@@ -1,0 +1,6 @@
+
+Disc Queue (<%= link_to "Download Entire Disc Queue (csv)", formatted_disc_queue_path(:format => 'csv', :full => true) -%>)
+
+<%= render :partial => 'shared/titles' -%>
+
+<%= query_pagination_links(params,@q.start_index,@q.number_of_results,@q.results_per_page) -%>

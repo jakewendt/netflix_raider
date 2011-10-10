@@ -1,0 +1,13 @@
+<%= render :partial => 'shared/search_local' -%>
+
+<%= will_paginate @titles -%>
+
+<%= render :partial => 'shared/titles' -%>
+
+<%= will_paginate @titles -%>
+<%= render :partial => 'shared/search_netflix' -%>
+
+<% if @user %>
+<p><%= link_to "Download my ratings in csv.", formatted_titles_path(params.merge(:rated => true, :format => :csv)) -%></p>
+<p><%= link_to "Download my ratings in xml.", formatted_titles_path(params.merge(:rated => true, :format => :xml)) -%></p>
+<% end %>

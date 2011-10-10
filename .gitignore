@@ -1,0 +1,8 @@
+versions/
+.svn/
+/config/netflix.yml
+/config/database.yml
+/log/*log
+/db/*sqlite3
+/query.log*
+/*.xml

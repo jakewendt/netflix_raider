@@ -1,0 +1,9 @@
+<p><%= Time.now -%>: Raid query failed with 
+<% if @results.is_a?(String) %>
+	<%= @results -%>
+<% else %>
+	<%= "#{@results.code}:#{@results.msg}" -%>
+<% end %>
+.  Raid canceled.
+<%= link_to 'Restart the raid?', raid_path -%>
+</p>

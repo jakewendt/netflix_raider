@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user: one
+  catalog_title_id: one
+  user_rating: 1
+  predicted_rating: 9.99
+
+two:
+  user: two
+  catalog_title: two
+  user_rating: 1
+  predicted_rating: 9.99

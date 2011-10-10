@@ -1,0 +1,23 @@
+
+<table id='counts_table' style='margin:0 auto'><tbody>
+<tr>
+	<th style='text-align:left'>Titles count:<th>
+	<td><span id='titles_count'><%= CatalogTitle.count(:conditions => ["validated_url IS NOT FALSE"]) -%></span><td>
+</tr>
+<tr>
+	<th style='text-align:left'>Ratings count:<th>
+	<td><span id='ratings_count'><%= @user.ratings.count -%></span><td>
+</tr>
+<tr>
+	<th style='text-align:left'>Next ID:<th>
+	<td><span id='next_offset'><%= @user.reload.next_ct_id -%></span><td>
+</tr>
+</tbody></table>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+<%#= remote_function({ :url => raid_path, :method => :post,
+	:failure => "$('#raid_status').prepend('<p>HTTP Error ' + request.status + '!</p>')"
+}) -%>
+/* ]]> */
+</script>

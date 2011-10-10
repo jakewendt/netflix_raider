@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Ratings Raider</title>
+<%= stylesheet_link_tag 'raider' -%>
+<%= javascript_include_tag :defaults -%>
+</head>
+<body>
+<div id='background'><div id='main_ghost'></div></div>
+<div id='main'>
+<div id='header'>
+  <%= link_to 'Ratings Raider', home_path -%>
+	<%= link_to( image_tag( 'Netflix_Primary_API_Logo.png', :style => 'border:0;' ), 'http://www.netflix.com' ) -%>
+  <span class='controls'>
+    <% if @user -%>
+      <span><%=@user.full_name.titleize-%></span>
+      <span>&nbsp;|&nbsp;</span>
+      <%= link_to "Deauthorize", authorization_path, :method => :delete -%>
+    <% else -%>
+      <%= link_to "Authorize", new_authorization_path -%>
+    <% end -%>
+    <span>&nbsp;|&nbsp;</span>
+    <%= link_to "Search", titles_path, :title => "Search the existing titles in the local database." -%>
+    <span>&nbsp;|&nbsp;</span>
+    <%= link_to "About", about_path -%>
+    <span>&nbsp;|&nbsp;</span>
+    <%= link_to "Help", help_path -%>
+  </span>
+  <% if @user -%>
+  <span class='controls'>
+    <%= link_to "Disc Queue", disc_queue_path, :title => "Get your disc queue." -%>
+    <span>&nbsp;|&nbsp;</span>
+    <%= link_to "Instant Queue", instant_queue_path, :title => "Get your instant queue." -%>
+    <span>&nbsp;|&nbsp;</span>
+    <%= link_to "Raid", new_raid_path, :title => "Initiate a ratings raid." -%>
+    <span>&nbsp;|&nbsp;</span>
+    <%= link_to "Ratings (#{@user.ratings_count})", titles_path(:rated => true), :title => "View your existing movie ratings." -%>
+  </span>
+  <% end -%>
+</div>
+
+<div id='content'>
+ <% flash.each do |key, msg| %>
+  <%= content_tag :p, msg, :id => key, :class => "flash #{key}" %>
+ <% end %>
+ <%= yield -%>
+</div>
+
+</div><!-- <div id='main'> -->
+</body>
+</html>

@@ -1,0 +1,23 @@
+<p>A series of AJAX requests will begin and continue until all titles are queried or an error occurs.  
+Unfortunately, my web server isn't working well and will return a 500 error occasionally.  
+I should also change this to be done using a background daemon.</p>
+<%= render :partial => 'table' -%>
+<div id='raid_status'><p>Working...</p></div>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+function make_raid_call() {
+$.ajax({
+	data:'authenticity_token='+encodeURIComponent('<%=if (protect_against_forgery?);form_authenticity_token();end-%>'),
+	dataType:'script', 
+	error:function(request){
+		$('#raid_status').prepend('<p>HTTP Error ' + request.status + '!</p>');
+		make_raid_call();
+	}, 
+	type:'post', 
+	url:'/raid'
+})
+};
+make_raid_call();
+/* ]]> */
+</script>

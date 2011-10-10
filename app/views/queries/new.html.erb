@@ -1,0 +1,11 @@
+
+<%= render :partial => 'shared/search_netflix' -%>
+
+<p>
+Results from the search will be added to 
+the local database so that there ids are 
+searchable for ratings for all users.
+Currently, the local database contains
+<%= CatalogTitle.count(:conditions => ["validated_url IS NOT FALSE"]) %>
+titles.
+</p>

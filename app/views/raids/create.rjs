@@ -1,0 +1,15 @@
+if @results.is_a?(Array)
+	message = if @results.blank?
+		"<p>#{Time.now}: Success.</p>" <<
+		"<p>No new  or updated ratings."
+	else
+		"<p>#{Time.now}: Success.</p>" <<
+		"<p>Added or updated #{pluralize(@results.length,'rating')} for " <<
+		"#{@results.collect{|r|r.catalog_title.title}.join(', ')}.</p>"
+	end
+	page.replace 'counts_table', :partial => 'table'
+	page.insert_html :top, 'raid_status', message
+	page << "make_raid_call()"
+else
+	page.insert_html :top, 'raid_status', :partial => 'error'
+end

@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  netflix_url: MyString1
+  title: MyString
+
+two:
+  netflix_url: MyString2
+  title: MyString

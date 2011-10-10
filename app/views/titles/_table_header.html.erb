@@ -1,0 +1,14 @@
+<tr>
+<% if @user %>
+	<th><%= link_to 'Actual', params.merge(:sort => 'user_rating desc, sortable_title asc') -%></th>
+	<th><%= link_to 'Predicted', params.merge(:sort => 'predicted_rating desc, sortable_title asc') -%></th>
+<% end %>
+	<th><%= link_to 'Average', params.merge(:sort => 'average_rating desc') -%></th>
+	<th><%= link_to 'Release', params.merge(:sort => 'release_year desc') -%></th>
+<% if @user and @user.is_jake? %>
+	<th>&nbsp;</th>
+	<th>&nbsp;</th>
+<% end %>
+	<th><%= link_to 'Title', params.merge(:sort => 'sortable_title asc') -%></th>
+	<th>&nbsp;</th>
+</tr>

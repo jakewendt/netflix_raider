@@ -1,0 +1,21 @@
+<table><tbody>
+
+<% if @user %>
+<tr>
+	<td id='user_rating_all' style='text-align:center'>
+			<%= user_star_bar(nil,0) -%></td>
+	<td></td><td></td><td></td>
+<% if @user.is_jake? %>
+	<th>&nbsp;</th>
+	<th>&nbsp;</th>
+<% end %>
+	<td>Rate all the visible titles</td>
+</tr>
+<% end %>
+
+<%= render :partial => 'table_header' %>
+
+<%= render :partial => 'shared/title', :collection => @titles, :as => :title %>
+
+
+</tbody></table>

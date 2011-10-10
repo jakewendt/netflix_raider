@@ -1,0 +1,8 @@
+<% form_for(@title, :url => title_path(@title)) do |f| %>
+	<p>Web Page:<%= @title.web_page %></p>
+	<p>Netflix URL:<%= @title.netflix_url %></p>
+	<p>Title:<%= f.text_field :title %></p>
+	<p>Sortable Title:<%= @title.sortable_title -%></p>
+	<p>Validated:<%= @title.validated_url -%></p>
+	<%= f.submit "Update" %>
+<% end %>

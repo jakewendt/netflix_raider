@@ -1,0 +1,5 @@
+if @title.validated_url
+page << "$('##{dom_id(@title)}').addClass('title_valid')"
+else
+page << "$('##{dom_id(@title)}').addClass('title_invalid')"
+end

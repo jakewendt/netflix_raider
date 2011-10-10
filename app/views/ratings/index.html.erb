@@ -1,0 +1,30 @@
+<table><tbody>
+<tr>
+<!--
+	<th>&nbsp;</th>
+-->
+	<th><%= link_to 'Rating', params.merge(:sort => 'user_rating desc') -%></th>
+	<th><%= link_to 'Rating', params.merge(:sort => 'catalog_titles.average_rating desc') -%></th>
+	<th><%= link_to 'Year', params.merge(:sort => 'catalog_titles.release_year desc') -%></th>
+	<th><%= link_to 'Runtime', params.merge(:sort => 'catalog_titles.runtime desc') -%></th>
+	<th><%= link_to 'Title', params.merge(:sort => 'catalog_titles.sortable_title asc') -%></th>
+</tr>
+<% @ratings.each do |r| -%>
+	<tr>
+<!--
+		<td style='text-align:center'><%#= link_to "Edit", edit_title_path(r.catalog_title) -%></td>
+-->
+		<td style='text-align:center'><%= r.user_rating||0 -%></td>
+		<td style='text-align:center'><%= r.catalog_title.average_rating||0 -%></td>
+		<td style='text-align:center'><%= r.catalog_title.release_year||0 -%></td>
+		<td style='text-align:center'><%= r.catalog_title.runtime||0 -%></td>
+		<td><%= link_to r.catalog_title.title, r.catalog_title.web_page -%></td>
+	</tr>
+<% end -%>
+</tbody></table>
+<%= will_paginate @ratings -%>
+
+<%= render :partial => 'shared/ratings_info' -%>
+<%= render :partial => 'shared/search_ratings' -%>
+<p><%= link_to "Download my ratings in csv.", formatted_ratings_path(:format => :csv) -%></p>
+<p><%= link_to "Download my ratings in xml.", formatted_ratings_path(:format => :xml) -%></p>

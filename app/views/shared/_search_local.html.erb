@@ -1,0 +1,6 @@
+<div id='search_local'>
+ <form action='/titles'>
+  <input type='text' name='term' value='<%=params[:term]-%>'/>
+  <input type='submit' value='Search Local Titles (<%=CatalogTitle.count(:conditions => ["validated_url IS NOT FALSE"])-%>)' />
+ </form>
+</div>

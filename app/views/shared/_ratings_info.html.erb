@@ -1,0 +1,6 @@
+<p>
+You currently have <%= Rating.count(:conditions => {:user_id => @user.id}) %>
+ratings out of the 
+<%= CatalogTitle.count(:conditions => ["validated_url IS NOT FALSE"]) %>
+total local titles.
+</p>

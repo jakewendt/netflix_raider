@@ -1,0 +1,16 @@
+<table><tbody>
+<tr>
+	<th>Rating</th>
+	<th>Release</th>
+	<th>Title</th>
+	<th>&nbsp;</th>
+</tr>
+<% @titles.each do |ct| -%>
+	<tr>
+		<td><%= star_bar(ct.average_rating||0) -%></td>
+		<td style='text-align:center'><%= ct.release_year||0 -%></td>
+		<td><%= link_to ct.title, ct.web_page -%></td>
+		<td><%= (!ct.status.blank?) ? ct.status : "&nbsp;" -%></td>
+	</tr>
+<% end -%>
+</tbody></table>
